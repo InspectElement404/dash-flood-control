@@ -7,7 +7,7 @@ def register_callbacks(app, df):
         Input("region-filter", "value")
     )
     def update_province_options(region):
-        print(f"Callback: {region}")
+       
         if not region or region == "All":
             provinces = df["Province"].unique()
         else:

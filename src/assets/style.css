@@ -1,13 +1,13 @@
 /* Top block / navbar */
 .top-block {
   background-color: white;
-  color: #333333;
+  color: #333;
   padding: 0 20px; /* remove top/bottom padding for better vertical alignment */
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  height: 60px; /* slightly taller for logo/title */
+  height: 60px;
   font-family: "Helvetica Neue", Arial, sans-serif;
   font-weight: 300;
 }
@@ -16,13 +16,12 @@
 .top-block .left-side {
   display: flex;
   align-items: center;
-  gap: 10px; /* space between logo and title */
-
+  gap: 10px;
   margin-right: 20px;
 }
 
 .top-block img {
-  height: 40px; /* logo height fits navbar */
+  height: 40px;
 }
 
 .top-block .center-side {
@@ -33,51 +32,63 @@
   gap: 30px;
   font-size: 16px;
 }
-/* Columns container */
+
+/* Columns layout */
 .columns-container {
   display: flex;
-  gap: 20px; /* spacing between columns */
+  gap: 20px;
   padding: 20px;
 }
 
-/* Left column with graph + text */
+/* Left column with graphs + KPI cards */
 .left-column {
   flex: 3;
   color: black;
   text-align: justify;
   background-color: white;
-  display: flex; /* make it a flex container */
-  flex-wrap: wrap; /* wrap to next line if too wide */
-  gap: 12px; /* gap between KPI cards */
-  align-items: flex-start; /* align cards at top */
+  display: flex;
+  flex-wrap: wrap; /* allows wrapping when too wide */
+  gap: 12px;
+  align-items: flex-start;
+}
+
+/* First row of KPI cards */
+.first-row {
+  display: flex;
+  flex-wrap: nowrap; /* prevent wrapping */
+  gap: 5px;
+  flex: 3;
+  align-items: stretch;
 }
 
 /* KPI card style */
 .kpi-card {
+  flex: 1;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: white;
   padding: 12px;
-
-  flex: 1 1 200px; /* grow/shrink, min width 200px */
-  box-sizing: border-box;
 }
 
-/* Right column container */
+/* Right column (filters) */
 .right-column {
   flex: 1;
-  color: black;
-  text-align: left; /* align content left */
-  padding: 20px;
-  padding-bottom: 30px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   gap: 12px;
+  color: black;
+  text-align: left;
+  padding: 20px 20px 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Label inside right column */
+/* Labels in right column */
 .right-column label {
   font-weight: bold;
   display: block;
@@ -86,12 +97,12 @@
   font-size: 16px;
 }
 
-/* dcc.Dropdown wrapper */
+/* Dropdowns full width */
 .right-column .dash-dropdown {
-  width: 100%; /* full width */
+  width: 100%;
 }
 
-/* Inner input field of Dropdown */
+/* Dropdown styling */
 .right-column .Select-control,
 .right-column .Select-menu-outer,
 .right-column .Select-placeholder {
@@ -101,7 +112,6 @@
   border-radius: 6px;
 }
 
-/* Optional: adjust Dropdown menu items */
 .right-column .Select-menu-outer {
   border-radius: 6px;
 }
