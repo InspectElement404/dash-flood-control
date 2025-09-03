@@ -5,7 +5,7 @@ def Header():
         # Left: logo + title
         html.Div([
             html.Img(src=dash.get_asset_url('dpwh.png'), alt="dpwh-logo"),
-            html.H3("Flood Control Projects Analytics", style={"margin": 0})
+            html.H3("Flood Control Projects Analytics", style={"margin": 0, "font-size": "16px"})
         ], className="left-side"),
 
         # Center menu
