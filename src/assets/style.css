@@ -44,10 +44,10 @@
 .left-column {
   flex: 3;
   color: black;
-  text-align: justify;
+  text-align: left;
   background-color: white;
   display: flex;
-  flex-wrap: wrap; /* allows wrapping when too wide */
+  flex-direction: column;
   gap: 12px;
   align-items: flex-start;
 }
@@ -57,23 +57,22 @@
   display: flex;
   flex-wrap: nowrap; /* prevent wrapping */
   gap: 5px;
-  flex: 3;
-  align-items: stretch;
+  width: 100%;
 }
 
 /* KPI card style */
 .kpi-card {
   flex: 1;
-  height: 200px;
+  height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: white;
-  padding: 12px;
+  padding: 0 5px;
+}
+.first-row > div:nth-child(1) {
+  padding-left: 0;
 }
 
 /* Right column (filters) */
@@ -114,4 +113,17 @@
 
 .right-column .Select-menu-outer {
   border-radius: 6px;
+}
+.section-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin: 8px 0px; /* small space below title */
+}
+
+.project-trend-plot {
+  width: 100%;
+  height: 300px;
+  border: 1px solid rgba(85, 85, 85, 0.1);
+  border-radius: 5px;
 }

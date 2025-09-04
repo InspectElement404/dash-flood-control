@@ -7,6 +7,8 @@ from src.components.cards import get_kpi
 from src.components.slicer import get_infra_slider, get_province_dropdown, get_region_dropdown
 import humanize
 import dash_bootstrap_components as dbc
+from src.components.visuals import generate_plot_timeseries
+from src.utils.figures import output_figure
 
 #loading all app related data
 data= load_app_data()
@@ -26,12 +28,20 @@ card_list = get_kpi(
     }
 )
 
+#figure for the project trends
+project_trend = output_figure(data["project_trend"])["project_trend"]
+print(project_trend)
+
 
 def HomePage():
     return html.Div([
         # Two-column section
         html.Div([
-            html.Div(html.Div(card_list, className="first-row"),
+            html.Div([
+                html.Div(card_list, className="first-row"),
+                html.Div("How much are we spending?", className="section-title"),
+                html.Div(dcc.Graph(figure=project_trend), className="project-trend-plot")
+                      ],
                      className="left-column"
                      ), 
             html.Div([ 

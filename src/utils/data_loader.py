@@ -32,12 +32,25 @@ def calculate_kpis(df):
     )
     return df_kpi, humanize.intword(total_fund)
 
+def generate_timeseries(df, date_col, value_col, funct):
+    df = df.copy()
+    df[date_col] = pd.to_datetime(df[date_col],format="%d/%m/%Y").dt.date
+    grouped = (
+        df.groupby(date_col)[value_col]
+        .agg(funct)
+        .reset_index(name=funct)
+    )
+    return grouped
+
+
+
 def load_app_data():
     df2 = load_data()
     mini, maxi = get_range_infra(df2)
     regionals = get_region(df2)
     provincials = get_province(df2)
     kpi_data, total_fund = calculate_kpis(df2)
+    project_trend = generate_timeseries(df2,"StartDate","ProjectID","count")
 
     return {
         "df2": df2,
@@ -47,4 +60,7 @@ def load_app_data():
         "provincials": provincials,
         "kpi_data": kpi_data,
         "total_fund": total_fund,
+        "project_trend": project_trend
     }
+
+
